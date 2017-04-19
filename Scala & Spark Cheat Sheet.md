@@ -93,6 +93,26 @@ df(<"col name">).alias(<"New Name">)
 ```scala
 df.select(<"col name">).alias(<"New Name">)
 ```
+### Ordery By
+
+*Using `SQL implicit`*
+
+```scala
+import sqlContext.implicits._
+
+df.orderBy($"<col name>".desc)
+// OR
+df.sort($"<col name>".asc)
+```
+
+*Using `sql functions`*
+
+```scala
+import org.apache.spark.sql.functions._
+
+df.orderBy(asc("col1"))
+```
+
 ### Dollar Notation
 
 See [link](https://bzhangusc.wordpress.com/2015/03/29/the-column-class/) going in depth
@@ -126,7 +146,7 @@ df1.as('a).join(df2.as('b), $"a.col" === $"b.col" && <more join conditions>,join
 
 ***Note:*** Dollar notation has to be used to drop the alias linked columns as they are defined as expressions  in the logic statement in the the join function. 
 
-### A note on coloum naming
+### A note on column naming
 
 - [ ] why in some functions i can refer to a coloum name that has a space vs why functions break when you give it a col name with a space?
 
@@ -140,6 +160,17 @@ df.withColumn("<col name>", lit(<value>))
 ### SQL Function
 
 [Documentation](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.functions$) 
+
+#### Conditional row creation: `when`
+
+```scala
+// Example: encoding gender string column into integer.
+
+// Scala:
+people.select(when(people("gender") === "male", 0)
+  .when(people("gender") === "female", 1)
+  .otherwise(2))
+```
 
 ## Dealing with DateTime :cry:
 

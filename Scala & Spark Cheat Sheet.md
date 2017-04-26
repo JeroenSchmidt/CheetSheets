@@ -201,6 +201,14 @@ val filterDF = joinedDF.filter("Date>"+ "cast('" + date + "' as date)");
 
 ## ML & MLLib
 
+## Streaming
+
+
+
+## Resources
+
+[USING HIVE WITH ORC FROM APACHE SPARK](https://hortonworks.com/hadoop-tutorial/using-hive-with-orc-from-apache-spark/)
+
 ## 
 
  

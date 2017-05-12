@@ -61,7 +61,7 @@ export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35/bin/python3}
 
 ## Hadoop
 
-#### Bash Commands
+### Bash Commands
 
 ```shell
 # accessing data lake
@@ -74,7 +74,7 @@ hadoop fs -get wasbs:///user/csvFiles/EmpData4.csv
 # instead of using /// you can also specify the entire cluster path
 ```
 
-#### PySpark
+### PySpark
 
 ```python
 # accessing storage account in pyspark

@@ -134,12 +134,14 @@ val warehouseLocation = "adl://transnetdemodlstore.azuredatalakestore.net/cluste
 val spark = SparkSession
       .builder
       .appName("TimeSheetsML")
-      //.master("local[*]")
+      //.master("
+      local[*]")
       //.config("spark.sql.warehouse.dir", "file:///C:/temp") // Necessary to work around a Windows bug in Spark 2.0.0; omit if you're not on Windows.
       .config("spark.sql.warehouse.dir", warehouseLocation)
       .enableHiveSupport()
       .getOrCreate()
 
+//persist table to HIVE
 <dataframe>.createOrReplaceTempView("everything_table");
 spark.sql("DROP TABLE IF EXISTS logistic_regression_features")
 spark.table("everything_table").write.saveAsTable("logistic_regression_features")

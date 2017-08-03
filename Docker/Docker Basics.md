@@ -1,5 +1,7 @@
 # Docker
 
+[TOC]
+
 ### Dockerfile commands summary
 
 Here's a quick summary of the few basic commands we used in our Dockerfile.
@@ -22,3 +24,26 @@ Here's a quick summary of the few basic commands we used in our Dockerfile.
  
 
 > **Note:** If you want to learn more about Dockerfiles, check out [Best practices for writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/).
+
+## Docker autocomplete
+
+Link:  https://github.com/nicferrier/docker-bash-completion
+
+```
+# dependancies 
+apt-get install socat
+apt-get install jq
+
+# autocomplete script
+curl -o ~/.docker-complete https://raw.githubusercontent.com/nicferrier/docker-bash-completion/master/docker-complete
+
+```
+
+
+
+Add the following code to the end of `~/.bashrc`
+
+```
+. ~/.docker-complete 
+```
+
